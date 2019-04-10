@@ -1,0 +1,7 @@
+*.iso
+*.lock
+*.o
+*.bin
+
+isodir/
+target/

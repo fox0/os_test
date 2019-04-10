@@ -1,0 +1,13 @@
+[package]
+name = "os_test"
+version = "0.0.1"
+authors = ["fox <none@example.com>"]
+edition = "2018"
+
+[dependencies]
+
+[profile.dev]
+panic = "abort"
+
+[profile.release]
+panic = "abort"

@@ -3,15 +3,18 @@ ENTRY(_start)
 SECTIONS {
     . = 1M;
 
-    .text :
+    .multiboot :
     {
         *(.multiboot)
-      /*  *(.text)*/
     }
-/*
+
+    .bss :
+    {
+        *(.bss)
+    }
+
     .text :
     {
-
+        *(.text)
     }
-*/
 }

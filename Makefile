@@ -1,14 +1,12 @@
-ISODIR=./isodir/boot/
-
 all: run
 
 run: build.iso
 	qemu-system-i386 -cdrom build.iso
 
 build.iso: kernel.bin grub.cfg
-	mkdir -p $(ISODIR)grub
-	cp grub.cfg $(ISODIR)grub/
-	cp kernel.bin $(ISODIR)
+	mkdir -p isodir/boot/grub
+	cp grub.cfg isodir/boot/grub/
+	cp kernel.bin isodir/boot/
 	grub-mkrescue -o build.iso isodir
 
 kernel.bin: boot.o kernel.o linker.ld
@@ -18,7 +16,7 @@ boot.o: boot.asm
 	nasm -felf64 boot.asm -o boot.o
 
 kernel.o: kernel.rs
-	rustc --emit obj -C panic=abort kernel.rs -o kernel.o
+	rustc --emit obj -C panic=abort -C lto -C opt-level=3 kernel.rs -o kernel.o
 
 clean:
 	rm -rf *.iso *.o *.bin isodir

@@ -5,16 +5,17 @@ SECTIONS {
 
     .multiboot :
     {
-        *(.multiboot)
+        boot.o(.multiboot)
     }
 
     .bss :
     {
-        *(.bss)
+        boot.o(.bss)
     }
 
     .text :
     {
-        *(.text)
+        boot.o(.text)
+        kernel.o(.text)
     }
 }

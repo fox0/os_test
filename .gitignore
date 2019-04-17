@@ -1,4 +1,11 @@
-*.iso
+*.tar.gz
 *.o
+*.d
+*.rlib
 *.bin
-isodir/
+*.elf64
+
+libcore/
+stdsimd/
+libcompiler_builtins/
+map.txt
